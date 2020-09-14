@@ -1,24 +1,13 @@
-
-// You should implement your task here.
-
 module.exports = function towelSort(matrix) {
+  let res = [];
 
-	if ( Array.isArray(matrix) == false || matrix.length == 0) {
-		return [];
-	} else {
-		
-		let arr = [];
+  if (!Array.isArray(matrix) || !matrix.length) {
+    return res;
+  }
 
-		for (let i = 0; i < matrix.length; i++) {
+  matrix.forEach((el, ind) => {
+    res.push(...(ind % 2 === 0 ? el : el.reverse()));
+  });
 
-			if (i % 2 == 0) {
-				arr = arr.concat(matrix[i]);
-			} else {
-				arr = arr.concat(matrix[i].reverse());
-			}
-	
-		}
-		return arr;
-	}
-
-}
+  return res;
+};
